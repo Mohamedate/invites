@@ -1,5 +1,4 @@
 import Image from "next/image";
-import FormCard from "./FormCard";
 
 export default async function Home() {
   return (

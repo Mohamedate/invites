@@ -1,19 +1,58 @@
-import Image from "next/image";
+import { insertInvite } from "@/db-actions";
+import { redirect } from "next/navigation";
 
-export default async function Home() {
+export default function Home() {
+  async function handleSubmit(formData: FormData) {
+    "use server";
+    await insertInvite(formData);
+    redirect("/thanks");
+  }
   return (
-    <div className=" h-screen w-screen ">
-      <div className="relative h-full w-full px-4">
-        <Image
-          src="/test.jpg"
-          alt="bg"
-          fill
-          className="object-cover absolute"
-          priority
-        />
-        {/* <div className="relative flex items-center  justify-center h-full w-full">
-          <FormCard />
-        </div> */}
+    <div className="container">
+      <div className="background-container"></div>
+      <div className="rsvp-card">
+        <img src="geosa-15.svg" alt="GEOSA Logo" className="logo" />
+        <h2>
+          {" "}
+          حفــــــــــــــــل تدشيــــــــــــن <br />
+          تراخيــــــــص الأنشطــــــــة والتصـــاريــــح الجيومكانيــــــة
+        </h2>
+        <p className="english-title">
+          Inauguration Ceremony of
+          <br />
+          the Geospatial Activities and Permits Licensing
+        </p>
+        <p className="rsvp-text">
+          <span className="rsvp-arabic">Tap To RSVP - لتأكيد حضورك</span>
+        </p>
+        <form action={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            className="name-input"
+            placeholder="أكتب اسمك هنا"
+            required
+          />
+
+          <div className="button-container">
+            <button
+              className="btn btn-decline"
+              type="submit"
+              name="status"
+              value="decline"
+            >
+              Decline - اعتذار
+            </button>
+            <button
+              className="btn btn-confirm"
+              type="submit"
+              name="status"
+              value="confirm"
+            >
+              Confirm - تأكيد
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );

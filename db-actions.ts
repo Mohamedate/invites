@@ -1,7 +1,7 @@
 "use server";
 import { supabase } from "./supabase";
 
-export async function insertInvite(formData: FormData) {
+export async function insertInvite(state, formData: FormData) {
   const name = formData.get("name");
   const status = formData.get("status");
 
@@ -14,14 +14,15 @@ export async function insertInvite(formData: FormData) {
   if (error) {
     throw new Error(error.message);
   }
-
-  return data;
+  if (status == "confirm") {
+    return { message: "لقد تم تأكيد حضوركم", ok: true };
+  } else {
+    return { message: "نلتقيكم في مناسبات قادمة", ok: false };
+  }
 }
 
 export async function getInvites() {
-  const { data, error } = await supabase
-    .from("invites")
-    .select("*");
+  const { data, error } = await supabase.from("invites").select("*");
 
   if (error) {
     throw new Error(error.message);

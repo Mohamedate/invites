@@ -53,7 +53,7 @@ export default function Home() {
                 value="decline"
                 disabled={isPending}
               >
-                Decline - اعتذار
+                Decline اعتذار
               </button>
               <button
                 className="btn btn-confirm"
@@ -62,7 +62,7 @@ export default function Home() {
                 value="confirm"
                 disabled={isPending}
               >
-                Confirm - تأكيد
+                Confirm تأكيد
               </button>
             </div>
           </form>

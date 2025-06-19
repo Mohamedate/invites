@@ -1,7 +1,8 @@
 "use server";
+import { revalidatePath } from "next/cache";
 import { supabase } from "./supabase";
 
-export async function insertInvite(state, formData: FormData) {
+export async function insertInvite(state: any, formData: FormData) {
   const name = formData.get("name");
   const status = formData.get("status");
 
@@ -14,6 +15,7 @@ export async function insertInvite(state, formData: FormData) {
   if (error) {
     throw new Error(error.message);
   }
+  revalidatePath("/all-invites");
   if (status == "confirm") {
     return { message: "لقد تم تأكيد حضوركم", ok: true };
   } else {

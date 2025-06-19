@@ -3,12 +3,11 @@ import { insertInvite } from "@/db-actions";
 
 import { useActionState } from "react";
 
-const initialState = {
-  message: null,
-};
-
 export default function Home() {
-  const [state, formAction] = useActionState(insertInvite, initialState);
+  const [state, formAction, isPending] = useActionState(
+    insertInvite,
+    undefined
+  );
 
   return (
     <div className="container">
@@ -25,16 +24,16 @@ export default function Home() {
           <br />
           the Geospatial Activities and Permits Licensing
         </p>
-        {!state.message && (
+        {!state?.message && (
           <p className="rsvp-text">
             <span className="rsvp-arabic">Tap To RSVP - لتأكيد حضورك</span>
           </p>
         )}
-        {state.message ? (
+        {state?.message ? (
           <div className="text-white mt-8">
             <p className="text-4xl mb-3">شكرا لكم</p>
-            {state.ok && <p className="text-[15px]">{state.message}</p>}
-            {!state.ok && <p className="text-[12px]">{state.message}</p>}
+            {state?.ok && <p className="text-[15px]">{state.message}</p>}
+            {!state?.ok && <p className="text-[12px]">{state.message}</p>}
           </div>
         ) : (
           <form action={formAction}>
@@ -52,6 +51,7 @@ export default function Home() {
                 type="submit"
                 name="status"
                 value="decline"
+                disabled={isPending}
               >
                 Decline - اعتذار
               </button>
@@ -60,6 +60,7 @@ export default function Home() {
                 type="submit"
                 name="status"
                 value="confirm"
+                disabled={isPending}
               >
                 Confirm - تأكيد
               </button>

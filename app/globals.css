@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 body {
-  height: 100vh;
+  min-height: 100vh;
+  max-height: 2000px;
 }
 .container {
   margin: 0;

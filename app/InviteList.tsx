@@ -17,6 +17,19 @@ interface InviteListProps {
   invites: Invite[];
 }
 
+/**
+ * InviteList Component
+ * -------------------
+ * Displays a list of invite responses, separated into accepted and declined sections.
+ * Shows summary statistics and uses color-coded cards for clarity.
+ *
+ * Props:
+ * - invites: Array of invite objects with id, created_at, is_accepted, and name fields.
+ *
+ * Usage:
+ * <InviteList invites={invitesArray} />
+ */
+
 export default function InviteList({ invites }: InviteListProps) {
   const acceptedInvites = invites.filter((invite) => invite.is_accepted);
   const declinedInvites = invites.filter((invite) => !invite.is_accepted);
@@ -35,9 +48,9 @@ export default function InviteList({ invites }: InviteListProps) {
     <div className="max-w-4xl mx-auto p-6  min-h-screen">
       <div className="text-center mb-8">
         <h1 className="text-3xl font-bold text-[#74bd91] mb-2">
-          RSVP Responses
+          Invite Responses
         </h1>
-        <p className="text-[#74bd91]">VIP Invitations</p>
+        <p className="text-[#74bd91]">VIP Guest List</p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-8">
@@ -45,7 +58,9 @@ export default function InviteList({ invites }: InviteListProps) {
         <div className="small-box rounded-lg shadow-lg overflow-hidden">
           <div className="bg-[#74bd91] text-white px-6 py-4 flex items-center gap-3">
             <FaUserCheck className="text-xl" />
-            <h3 className="text-xl">Confirmed ({acceptedInvites.length})</h3>
+            <h3 className="text-xl">
+              Accepted Invites ({acceptedInvites.length})
+            </h3>
           </div>
           <div className="p-6">
             {acceptedInvites.length === 0 ? (
@@ -85,7 +100,7 @@ export default function InviteList({ invites }: InviteListProps) {
           <div className="bg-[#ef434d] text-white px-6 py-4 flex items-center gap-3">
             <FaUserTimes className="text-xl" />
             <h3 className="text-xl font-semibold">
-              Declined ({declinedInvites.length})
+              Declined Invites ({declinedInvites.length})
             </h3>
           </div>
           <div className="p-6">
@@ -129,13 +144,13 @@ export default function InviteList({ invites }: InviteListProps) {
             <div className="text-3xl font-bold text-white">
               {invites.length}
             </div>
-            <div className="text-white">Total Responses</div>
+            <div className="text-white">Total Invites</div>
           </div>
           <div>
             <div className="text-3xl font-bold text-green-600">
               {acceptedInvites.length}
             </div>
-            <div className="text-white">Confirmed</div>
+            <div className="text-white">Accepted</div>
           </div>
           <div>
             <div className="text-3xl font-bold text-[#ef434d]">

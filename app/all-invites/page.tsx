@@ -4,7 +4,7 @@ import InviteList from "../InviteList";
 
 export default async function page() {
   const invites = await getInvites();
-  console.log(invites);
+
   return (
     <div>
       <div className="background-container"></div>

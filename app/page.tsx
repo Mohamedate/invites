@@ -13,11 +13,11 @@ export default function Home() {
     <div className="container">
       <div className="background-container"></div>
       <div className="rsvp-card">
-        <img src="geosa-15.svg" alt="GEOSA Logo" className="logo" />
+        <img src="footer-logo.svg" alt="GEOSA Logo" className="logo" />
         <h2>
           {" "}
           حفــــــــــــــــل تدشيــــــــــــن <br />
-          تراخيــــــــص الأنشطــــــــة والتصـــاريــــح الجيومكانيــــــة
+          التراخيــــــــص والتصـــاريــــح الجيومكانيــــــة
         </h2>
         <p className="english-title">
           Inauguration Ceremony of

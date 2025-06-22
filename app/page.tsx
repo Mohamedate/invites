@@ -20,9 +20,9 @@ export default function Home() {
           التراخيــــــــص والتصـــاريــــح الجيومكانيــــــة
         </h2>
         <p className="english-title">
-          Inauguration Ceremony of
+          Geospatial licenses &
           <br />
-          the Geospatial Activities and Permits Licensing
+          inauguration ceremony
         </p>
         {!state?.message && (
           <p className="rsvp-text">

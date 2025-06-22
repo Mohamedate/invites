@@ -3,7 +3,7 @@ import React from "react";
 import InviteList from "../InviteList";
 
 export const dynamic = "force-dynamic";
-
+//comment
 export default async function page() {
   const invites = await getInvites();
 
